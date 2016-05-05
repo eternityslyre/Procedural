@@ -1,0 +1,29 @@
+﻿Crime->
+Murder
+Theft
+Blackmail
+
+LesserCrime->
+Adultery
+CheatingCompetition
+
+Murder->
+Victim Motive Means Opportunity
+
+Victim->
+Name Income Friends Family Enemies
+
+Theft->
+StolenItem Victim Motive Means Opportunity
+
+Adultery->
+Victim AffairPartner Evidence
+
+CheatingCompetition->
+Motive Means Opportunity
+
+Blackmail->
+Victim Motive Means Opportunity Demands
+
+Demands->
+Lie Silence Crime
