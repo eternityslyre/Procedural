@@ -10,6 +10,27 @@ CheatingCompetition
 Murder->
 Victim Motive Means Opportunity
 
+Motive->
+Revenge
+Theft
+Contract
+Blackmail
+
+Means->
+MurderWeapon
+
+Opportunity->
+Time
+Place
+
+Time->
+Evidence
+Lie Evidence
+
+Place->
+Evidence
+Lie Evidence
+
 Victim->
 Name Income Friends Family Enemies
 
