@@ -8,16 +8,42 @@ Adultery
 CheatingCompetition
 
 Murder->
-Victim Motive Means Opportunity
+Victim Motive ViolentMeans Opportunity
 
 Motive->
-Revenge
+Money
+CoverUp
 Theft
+Accident
+Revenge
 Contract
 Blackmail
 
-Means->
-MurderWeapon
+CoverUp->
+Crime
+
+Revenge->
+Crime
+
+Money->
+Greed
+BusinessDebt
+GamblingDebt
+
+ViolentMeans->
+Weapon
+Anger
+ForcedSuicide
+
+ThievingMeans->
+Key
+KnowledgeOfRoutine
+Blackmail
+
+VerbalMeans->
+Crime
+Hostage
+ThreatOfViolence
 
 Opportunity->
 Time
@@ -25,26 +51,66 @@ Place
 
 Time->
 Evidence
-Lie Evidence
+Evidence FalseTime
+
+FalseTime->
+Lie
 
 Place->
 Evidence
-Lie Evidence
+Evidence FalsePlace
+
+FalsePlace->
+Lie
 
 Victim->
 Name Income Friends Family Enemies
 
 Theft->
-StolenItem Victim Motive Means Opportunity
+StolenItem Victim Motive ThievingMeans Opportunity
 
 Adultery->
 Victim AffairPartner Evidence
 
 CheatingCompetition->
 Motive Means Opportunity
+Motive Means Opportunity [Accomplice] 
 
 Blackmail->
-Victim Motive Means Opportunity Demands
+Victim Motive VerbalMeans Opportunity Demands
+
+Lie->
+Evidence Motive
 
 Demands->
-Lie Silence Crime
+Lie
+Silence
+Crime
+LesserCrime
+
+Evidence->
+DirectWitness [FalseMotive|FalseMeans|FalseOpportunity]
+DirectObject [FalseMotive|FalseMeans|FalseOpportunity]
+TangentialTestimony [FalseMotive|FalseMeans|FalseOpportunity]
+AccidentalTestimony [FalseMotive|FalseMeans|FalseOpportunity]
+IndirectObject [FalseMotive|FalseMeans|FalseOpportunity]
+
+IndirectObject->
+TwoPartEvidence
+DeductionEvidence
+
+FalseMotive->
+Suspect
+
+FalseMeans->
+FalseThievingMeans
+FalseViolentMeans
+
+FalseThievingMeans->
+ThievingMeans
+
+FalseViolentMeans->
+ViolentMeans
+
+FalseOpportunity->
+FalseTime FalsePlace

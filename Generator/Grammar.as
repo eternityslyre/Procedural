@@ -73,17 +73,39 @@ package Generator {
 
 		private function recurseRule(lhs:String, rhs:String)
 		{
+			//trace("Parsing "+lhs+"->"+rhs);
 			if(rhs.match(/^\/\//)) return;
-			if(rhs.match(/\[\S|\S\]/))
+			if(rhs.match(/\[[^\]]+\]/))
 			{
-				var matched = rhs.match(/\[\S+( \S+)*?\]/);
+				var matches = rhs.match(/\[[^\]]+\]/);
+				var matched:String = matches[0];
+				//trace("Matched []:"+matched);
 				//remove first optional portion
-				var newRHS = rhs.replace(/\[(\S(.*\S)*)\]/, "$1");
+				var newRHS = rhs.replace(/\[([^\]]+)\]/, "$1");
 				//trace("recursing on "+newRHS);
 				recurseRule(lhs, newRHS);
+				newRHS = rhs.replace(/\[([^\]]+)\]/, "");
+				recurseRule(lhs, newRHS);
 			}
-			var cleanedRHS = rhs.replace(/ ?\[\S+( \S+)*?\]/g,"");
-			addRule(lhs, cleanedRHS, rules.length);
+			if(rhs.match(/\S\|\S/)){
+				var matches = rhs.match(/\S+\|\S+/);
+				var matched:String = matches[0];
+				//trace("Matched |:"+matched);
+				//remove first optional portion
+				var alternates = matched.split("|");
+				for(var alternate in alternates)
+				{
+					var newRHS = rhs.replace(/(\S+\|\S+)/, "@");
+					newRHS = newRHS.replace("@",alternates[alternate]);
+					//trace("recursing on "+newRHS);
+					recurseRule(lhs, newRHS);
+				}
+			}
+			if(!rhs.match(/\[|\]|\|/))
+			{
+				var cleanedRHS = rhs.replace(/ ?\[\S+( \S+)*?\]/g,"");
+				addRule(lhs, cleanedRHS, rules.length);
+			}
 		}
 
 		public function addRule(lhs:String, rhs:String, ruleindex=-1){

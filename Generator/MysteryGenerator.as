@@ -16,6 +16,14 @@
 		{
 			trace("Grammar loaded. I have no idea what to do with this.");
 			grammar.printRules();
+			generateMystery();
+		}
+
+		private function generateMystery()
+		{
+			var tree = new MysteryTree();
+			tree.generate(grammar)
+			tree.generateTextMystery();
 		}
 	
 		

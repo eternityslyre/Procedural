@@ -1,0 +1,16 @@
+a ->
+b
+c
+
+b ->
+a d|e
+c d|e
+
+c ->
+[a] [b]
+[b] [f]
+
+d ->
+g [a|b|c]
+g [a [a b]]
+g [a [b]] [c [d]]
