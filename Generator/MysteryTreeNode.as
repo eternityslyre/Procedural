@@ -60,7 +60,8 @@ package Generator {
 		{
 			if(children.length < 1)
 			{
-				addChild(new MysteryTreeNode("Evidence"));
+				var evidenceNode = new MysteryTreeNode("Evidence");
+				addChild(evidenceNode);
 				return;
 			}
 			for(var child in children)

@@ -18,6 +18,10 @@ Accident
 Revenge
 Contract
 Blackmail
+Protect
+
+Protect->
+Coverup LovedOne
 
 CoverUp->
 Crime
